@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <input type="text" v-model='msg'>
+    <p>{{msg}}</p>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#root',
+      data:{
+        msg:'南风知我意，吹梦到西洲。'
+      }
+    })
+  </script>
+</body>
+</html>

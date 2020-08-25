@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{msg}}</h1>
+
+    <a v-bind:href=url>百度</a>
+    <a :href=url>百度</a>
+
+    <button v-on:click='handleOne'>点击弹出赵丽颖</button>
+    <button @click='handleSecond'>点击弹出杨幂</button>
+
+    <button @click='handleChange'>点击修改p标签的内容</button>
+    <p ref='pp'>臣妾做不到啊~</p>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        msg:'人类充满了谎言，我又怎能独善其身',
+        url:'http://www.baidu.com'
+      },
+      methods:{
+        handleOne:function () {
+          alert('赵丽颖')
+        },
+        handleSecond:function () {
+          alert('杨幂')
+        },
+        handleChange:function () {
+          this.$refs.pp.innerHTML = '真香！！！'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
