@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button @click='changeImg'>切换显示效果</button>
+    <img v-if='show' src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2730271093,3332354411&fm=26&gp=0.jpg" alt="">
+    <img v-else src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1958727831,1780820622&fm=26&gp=0.jpg" alt="">
+    <button @click='change'>sss</button>
+    <p v-show='love'>我喜欢你</p>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        show:true,
+        love:true
+      },
+      methods:{
+        changeImg () {
+          this.show = !this.show
+        },
+        change () {
+          this.love = !this.love
+        }
+      }
+    })
+  </script>
+</body>
+</html>

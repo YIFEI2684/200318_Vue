@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原生JS操作属性</title>
+</head>
+<body>
+  <script>
+    const person = {
+      firstName:'诸葛',
+      lastName:'孔明'
+    }
+    // 给person对象身上添加属性
+    Object.defineProperty(person,'fullName',{
+      enumerable:true,
+      configurable:false,
+      // 获取该属性的值
+      get () {
+        return this.firstName + '_' + this.lastName
+      },
+      // 修改该属性的值   参数是修改的属性值
+      set (val) {
+        const name = val.split('_')
+        this.firstName = name[0]
+        this.lastName = name[1]
+      }
+    })
+    console.log(person.fullName)
+    person.fullName = '西门_吹雪'
+    console.log(person.firstName,person.lastName)
+
+    person.firstName = '强哥'
+    console.log(person.fullName)
+
+
+  </script>
+</body>
+</html>

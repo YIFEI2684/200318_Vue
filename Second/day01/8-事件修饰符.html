@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 点击子级，父级也会触发事件---事件冒泡,@click.stop阻止了事件冒泡 -->
+    <div @click='changeDiv'>
+      1111111111111111111
+      <p @click.stop='changeP'>2222222222222222</p>
+    </div>
+
+    <!-- a标签有href值会自动跳转，当加上.prevent后会阻止浏览器的默认行为 -->
+    <a href="http://www.baidu.com" @click.prevent='changeA'>点击打印</a>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+
+      },
+      methods:{
+        changeDiv () {
+          console.log('我是父级的div')
+        },
+        changeP () {
+          console.log('我是子级的P')
+        },
+        changeA () {
+          console.log('我是a标签')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model='search'>
+    <ul>
+      <li v-for='(person,index) in personArr' :key='person.id'>
+        索引：{{index}}----姓名：{{person.name}}----年龄：{{person.age}}
+      </li>
+    </ul>
+    <button v-on:click='sort=1'>升序</button>
+    <button @click='sort=2'>降序</button>
+    <button @click='sort=0'>原序</button>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        search:'', // 文本框搜索内容
+        sort:0, // 排序方式 1--升序  2--降序
+        persons:[
+          {id:'001',name:'tom',age:31},
+          {id:'002',name:'rousi',age:32},
+          {id:'003',name:'jack',age:33},
+          {id:'004',name:'lucy',age:34},
+          {id:'005',name:'alibaba',age:37},
+        ]
+      },
+      computed:{
+        personArr () {
+          const {search,sort,persons} = this
+          // 根据搜索内容，选择匹配的person
+          const per = persons.filter((person)=>{
+            return person.name.indexOf(search) !== -1
+          })
+          // 对搜索出来的person进行按年龄排序
+          if (sort!==0) {
+            per.sort((p1,p2)=>{
+              return sort===1?p1.age - p2.age : p2.age - p1.age
+            })
+          }
+          return per
+        }
+      }
+    })
+  </script>
+</body>
+</html>

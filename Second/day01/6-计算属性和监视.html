@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model='fullName'>
+    <input type="text" v-model='fullName1'>
+  </div>
+  
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        firstName:'诸葛',
+        lastName:'孔明',
+      },
+      computed:{
+        fullName () {
+          return this.firstName + '_' + this.lastName
+        },
+        fullName1:{
+          get () {
+            return this.firstName + '_' + this.lastName
+          },
+          set (val) {
+            console.log(this,val)
+            const name = val.split('_')
+            this.firstName = name[0]
+            this.lastName = name[1]
+            console.log(this.fullName1)
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
